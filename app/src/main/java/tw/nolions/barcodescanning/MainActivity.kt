@@ -1,6 +1,7 @@
 package tw.nolions.barcodescanning
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
@@ -129,6 +130,7 @@ class MainActivity : AppCompatActivity() {
      * @param barcodeScanner
      * @param imageProxy
      */
+    @SuppressLint("UnsafeOptInUsageError")
     private fun processImageProxy(barcodeScanner: BarcodeScanner, imageProxy: ImageProxy) {
         imageProxy.image?.let { image ->
             val inputImage =
@@ -172,7 +174,9 @@ class MainActivity : AppCompatActivity() {
             Barcode.FORMAT_QR_CODE,
             Barcode.FORMAT_UPC_A,
             Barcode.FORMAT_UPC_E,
-            Barcode.FORMAT_PDF417
+            Barcode.FORMAT_PDF417,
+            Barcode.FORMAT_DATA_MATRIX,
+            Barcode.FORMAT_AZTEC,
         ).build()
     }
 
